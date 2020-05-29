@@ -1,0 +1,23 @@
+深度优先算法实际上就是一种数的遍历
+不断迭代，直到遍历到最下层的叶子节点，值得一提的是，需要将走过的或者遍历过的都进行标记，避免重复
+适用于：岛屿问题
+固定的代码模式如下
+public void dfs(char[][] grid,int r,int c){
+        //basecase1，超出格子的范围
+        if(r < 0 || r>=grid.length || c<0 || c>=grid[0].length)
+        {
+            return;
+        }
+        //basecase2，将遍历过的1，统统改为0，遇到0直接返回，避免重复遍历
+        if (grid[r][c] == '0') {
+
+            return;
+        }
+        grid[r][c]= '0';
+        //遍历的四个方向
+        dfs(grid,r-1,c);
+        dfs(grid,r+1,c);
+        dfs(grid,r,c-1);
+        dfs(grid,r,c+1);
+
+    }
